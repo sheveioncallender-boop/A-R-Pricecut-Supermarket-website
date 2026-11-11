@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+    <template id="phone" name="Pricecut telephone">
+        <a t-if="website.pricecut_phone" t-att-href="website._pricecut_phone_uri()" class="pc-phone">
+            <i class="fa fa-phone" aria-hidden="true"/> <span t-field="website.pricecut_phone"/>
+        </a>
+    </template>
+    <template id="topbar" name="Pricecut announcement">
+        <div class="pc-topbar"><div class="pc-container pc-topbar-inner">
+            <span>Big on value. Right here in <b>Sangre Grande.</b></span>
+            <div><span class="pc-topbar-hours" t-if="website.pricecut_hours" t-field="website.pricecut_hours"/><t t-call="ar_pricecut_website.phone"/></div>
+        </div></div>
+    </template>
+    <template id="footer" name="Pricecut footer">
+        <div id="footer" class="pc-footer">
+            <div class="pc-container pc-footer-top">
+                <div><span class="pc-eyebrow">YOUR EVERYDAY SHOPPING STOP</span><h2>More in your basket.<br/>More for your budget.</h2></div>
+                <a href="/shop" class="pc-button pc-button-white">Explore the shop <span aria-hidden="true">→</span></a>
+            </div>
+            <div class="pc-container pc-footer-grid">
+                <div class="pc-footer-brand"><a href="/"><img src="/ar_pricecut_website/static/src/img/pricecut-logo.png" alt="A&amp;R Pricecut Supermarket — We Cut it Lower" loading="lazy" width="1774" height="887"/></a><p>Wholesale &amp; retail.<br/>Your supermarket in Sangre Grande.</p></div>
+                <div><h3>Explore</h3><a href="/shop">Shop groceries</a><a href="/pricecut-home#departments">Departments</a><a href="/pricecut/wholesale">Wholesale enquiries</a><a href="/pricecut/about">About A&amp;R</a></div>
+                <div><h3>Here to help</h3><a href="/pricecut/contact">Contact &amp; directions</a><a href="/my/home">My account</a><a href="/shop/cart">My basket</a><a href="/pricecut/contact#questions">Shopping questions</a></div>
+                <div><h3>Visit Sangre Grande</h3><p t-field="website.pricecut_address"/><t t-call="ar_pricecut_website.phone"/><p class="pc-footer-hours" t-if="website.pricecut_hours" t-field="website.pricecut_hours"/></div>
+            </div>
+            <div class="pc-container pc-copyright"><span>© <t t-out="datetime.datetime.now().year"/> A&amp;R Pricecut Supermarket.</span><span>Developed by Spxcorp Limited.</span></div>
+        </div>
+    </template>
+    <template id="layout" inherit_id="website.layout" name="Pricecut scoped native layout" priority="90">
+        <xpath expr="//div[@id='wrapwrap']" position="attributes"><attribute name="t-attf-class" add="{{ 'pc-website' if website.pricecut_enabled else '' }}" separator=" "/></xpath>
+        <xpath expr="//header/*[1]" position="before"><t t-if="website.pricecut_enabled" t-call="ar_pricecut_website.topbar"/></xpath>
+        <xpath expr="//footer/div[@id='footer']" position="attributes"><attribute name="t-if">not website.pricecut_enabled</attribute></xpath>
+        <xpath expr="//footer/div[@id='footer']" position="after"><t t-if="website.pricecut_enabled" t-call="ar_pricecut_website.footer"/></xpath>
+        <xpath expr="//footer/div[hasclass('o_footer_copyright')]" position="attributes"><attribute name="t-if">not no_copyright and not website.pricecut_enabled</attribute></xpath>
+    </template>
+    <template id="native_phone" inherit_id="website.header_text_element" name="Pricecut native mobile and desktop phone" priority="90">
+        <xpath expr="//li" position="replace"><t t-if="website.pricecut_enabled"><li t-attf-class="#{_item_class}"><div t-attf-class="s_text_block #{_div_class}"><t t-call="ar_pricecut_website.phone"/></div></li></t><t t-else="">$0</t></xpath></template>
+    <template id="native_header_cleanup" inherit_id="website_sale.template_header_default" name="Pricecut native desktop navigation" priority="90"><xpath expr="//t[@t-call='website.placeholder_header_text_element']" position="attributes"><attribute name="t-if">not website.pricecut_enabled</attribute></xpath><xpath expr="//t[@t-call='website.placeholder_header_call_to_action']" position="attributes"><attribute name="t-if">not website.pricecut_enabled</attribute></xpath></template><template id="homepage" name="Pricecut supermarket home">
+        <t t-call="website.layout">
+            <t t-set="additional_title">We Cut it Lower</t>
+            <t t-set="website_meta_description">A&amp;R Pricecut Supermarket, Eastern Main Road, Sangre Grande. Explore groceries and everyday essentials, or contact us for wholesale enquiries.</t>
+            <div id="wrap" class="pc-page">
+                <section class="pc-hero" aria-label="Welcome to A&amp;R Pricecut">
+                    <div class="pc-hero-photos" data-pc-slider="true" aria-label="Grocery photographs">
+                        <img class="pc-slide is-active" src="/ar_pricecut_website/static/src/img/hero_groceries_hd.webp" alt="A basket filled with groceries and fresh produce" fetchpriority="high" width="2400" height="3600"/>
+                        <img class="pc-slide" src="/ar_pricecut_website/static/src/img/promo_savings_hd.webp" alt="A colourful selection of fresh groceries" loading="lazy" aria-hidden="true"/>
+                        <img class="pc-slide" src="/ar_pricecut_website/static/src/img/about_store_aisle_hd.webp" alt="A supermarket aisle filled with everyday essentials" loading="lazy" aria-hidden="true"/>
+                    </div>
+                    <div class="pc-container pc-hero-inner"><div class="pc-hero-copy oe_structure">
+                        <span class="pc-eyebrow"><span class="pc-small-line"/> A&amp;R PRICECUT SUPERMARKET</span>
+                        <h1>Everyday essentials.<br/><em>Extraordinary<br/>value.</em></h1>
+                        <p>From the weekly grocery run to the little things you need today. Make more of your budget, right here in Sangre Grande.</p>
+                        <div class="pc-actions"><a href="/shop" class="pc-button">Explore the shop <span aria-hidden="true">→</span></a><a href="/pricecut/contact" class="pc-text-link">Visit our store <span aria-hidden="true">→</span></a></div>
+                        <div class="pc-hero-note"><i class="fa fa-map-marker" aria-hidden="true"/> Eastern Main Road, Sangre Grande</div>
+                    </div></div>
+                    <div class="pc-value-stamp" aria-hidden="true">We Cut<br/><strong>it Lower.</strong></div>
+                    <div class="pc-slider-controls" aria-label="Banner controls">
+                        <button type="button" data-pc-slide="0" class="is-active" aria-label="Show grocery basket photo" aria-pressed="true"/>
+                        <button type="button" data-pc-slide="1" aria-label="Show fresh groceries photo" aria-pressed="false"/>
+                        <button type="button" data-pc-slide="2" aria-label="Show grocery aisle photo" aria-pressed="false"/>
+                        <button type="button" class="pc-slider-pause" data-pc-pause="true" aria-label="Pause photo rotation"><i class="fa fa-pause" aria-hidden="true"/></button>
+                    </div>
+                </section>
+                <section class="pc-benefits"><div class="pc-container pc-benefit-grid oe_structure">
+                    <div><i class="fa fa-tag" aria-hidden="true"/><span><strong>Value comes first</strong><small>We Cut it Lower</small></span></div>
+                    <div><i class="fa fa-shopping-basket" aria-hidden="true"/><span><strong>Wholesale &amp; retail</strong><small>For homes and businesses</small></span></div>
+                    <div><i class="fa fa-heart-o" aria-hidden="true"/><span><strong>Everyday essentials</strong><small>Your shopping, made simple</small></span></div>
+                    <div><i class="fa fa-map-marker" aria-hidden="true"/><span><strong>Right here in Grande</strong><small>Eastern Main Road</small></span></div>
+                </div></section>
+                <section id="departments" class="pc-section pc-container">
+                    <div class="pc-section-heading oe_structure"><div><span class="pc-eyebrow">FIND YOUR EVERYDAY FAVOURITES</span><h2>A little of everything.<br/><span>A whole lot of value.</span></h2></div><a href="/shop" class="pc-text-link">Browse all products <span aria-hidden="true">→</span></a></div>
+                    <div class="pc-departments" t-if="departments"><a t-foreach="departments" t-as="tile" t-att-href="tile['url']" class="pc-department"><div><img t-att-src="tile['image']" t-att-alt="tile['name']" loading="lazy"/></div><h3 t-out="tile['name']"/><span aria-hidden="true">→</span></a></div>
+                    <p t-else=""><a href="/web/login?redirect=/shop">Sign in to browse our departments.</a></p>
+                </section>
+                <section class="pc-container pc-promo-grid oe_structure">
+                    <div class="pc-promo pc-promo-red"><div><span class="pc-eyebrow">THE WEEKLY SHOP, SORTED</span><h2>Fill your basket.<br/>Love the value.</h2><p>Explore groceries and household favourites.</p><a href="/shop" class="pc-button pc-button-white">Start browsing <span aria-hidden="true">→</span></a></div><img src="/ar_pricecut_website/static/src/img/promo_savings_hd.webp" alt="Fresh vegetables on display" loading="lazy"/></div>
+                    <div class="pc-promo pc-promo-navy"><span class="pc-eyebrow">BUYING FOR YOUR BUSINESS?</span><h2>Think bigger.<br/>Shop wholesale.</h2><p>Speak to our team about products, quantities and current wholesale prices.</p><a href="/pricecut/wholesale" class="pc-text-link">Let's talk wholesale <span aria-hidden="true">→</span></a></div>
+                </section>
+                <section id="featured" class="pc-section pc-container">
+                    <div class="pc-section-heading oe_structure"><div><span class="pc-eyebrow">EXPLORE OUR ONLINE SELECTION</span><h2>What's in your basket?</h2></div><a href="/shop" class="pc-text-link">Shop all <span aria-hidden="true">→</span></a></div>
+                    <div t-if="products" class="pc-products">
+                        <article t-foreach="products" t-as="product" class="pc-product">
+                            <a t-att-href="product.website_url" class="pc-product-image"><img t-att-src="'/web/image/product.template/%s/image_512' % product.id" t-att-alt="product.name" loading="lazy"/></a>
+                            <a t-att-href="product.website_url" class="pc-product-name" t-field="product.name"/>
+                            <t t-set="price" t-value="product_prices[product.id]"/>
+                            <div class="pc-product-bottom"><div t-if="not website.prevent_zero_price_sale or not website.currency_id.is_zero(price['price_reduce'])"><del t-if="price.get('base_price')" t-out="price['base_price']" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/><strong t-out="price['price_reduce']" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/></div><span t-else="">Contact us for pricing</span><a t-att-href="product.website_url" class="pc-product-view" t-att-aria-label="'View ' + product.name">→</a></div>
+                        </article>
+                    </div>
+                    <div t-elif="not can_shop" class="pc-empty"><h3>Your shop is one sign-in away.</h3><p>Sign in to view the online selection.</p><a href="/web/login?redirect=/shop" class="pc-button">Sign in <span aria-hidden="true">→</span></a></div>
+                    <div t-else="" class="pc-empty"><i class="fa fa-shopping-basket" aria-hidden="true"/><div><h3>Good things are coming to our online shelves.</h3><p>Our online selection is being prepared. In the meantime, visit us or call to check an item.</p></div><a href="/pricecut/contact" class="pc-button">Contact the store <span aria-hidden="true">→</span></a></div>
+                </section>
+                <section class="pc-story pc-container oe_structure"><div class="pc-story-photo"><img src="/ar_pricecut_website/static/src/img/about_store_aisle_hd.webp" alt="Illustrative supermarket shelves" loading="lazy"/><span class="pc-photo-caption">Everyday shopping inspiration</span></div><div class="pc-story-copy"><span class="pc-eyebrow">YOUR NEIGHBOURHOOD. YOUR SUPERMARKET.</span><h2>A Grande place<br/>to shop.</h2><p>Good shopping starts close to home. Find A&amp;R Pricecut Supermarket on Eastern Main Road, Sangre Grande, for your next grocery run.</p><p>Shopping for your household or enquiring for your business? Our team is a phone call away.</p><a href="/pricecut/about" class="pc-text-link">Get to know A&amp;R <span aria-hidden="true">→</span></a></div></section>
+                <t t-call="ar_pricecut_website.visit_strip"/>
+                <div class="oe_structure" id="pc-home-extra"/>
+            </div>
+        </t>
+    </template>
+    <template id="visit_strip" name="Pricecut visit strip"><section class="pc-visit-strip"><div class="pc-container"><div><span class="pc-eyebrow">COME ON IN</span><h2>Your next grocery run starts here.</h2><p t-field="website.pricecut_address"/></div><a href="/pricecut/contact" class="pc-button">Find our store <span aria-hidden="true">→</span></a></div></section></template>
+    <template id="about_page" name="About A&amp;R Pricecut"><t t-call="website.layout"><t t-set="additional_title">About us</t><t t-set="website_meta_description">Get to know A&amp;R Pricecut Supermarket, your wholesale and retail supermarket in Sangre Grande.</t><div id="wrap" class="pc-page"><section class="pc-page-hero oe_structure"><div class="pc-container"><span class="pc-eyebrow">A&amp;R PRICECUT • SANGRE GRANDE</span><h1>Everyday shopping.<br/><em>Close to home.</em></h1><p>Wholesale and retail, with value at the heart of it.</p></div></section><section class="pc-story pc-container oe_structure"><div class="pc-story-photo"><img src="/ar_pricecut_website/static/src/img/hero_groceries_hd.webp" alt="A shopper picking up grocery essentials" loading="lazy"/></div><div class="pc-story-copy"><span class="pc-eyebrow">WE CUT IT LOWER</span><h2>Your list.<br/>Your neighbourhood.<br/>Your A&amp;R.</h2><p>You'll find A&amp;R Pricecut Supermarket on Eastern Main Road in Sangre Grande. Whether you're picking up a few essentials or planning a bigger shop, start here.</p><p>We serve retail shoppers and welcome wholesale enquiries. Call our team to check availability and current prices before your visit.</p><a href="/pricecut/contact" class="pc-button">Come visit us <span aria-hidden="true">→</span></a></div></section><t t-call="ar_pricecut_website.visit_strip"/><div class="oe_structure" id="pc-about-extra"/></div></t></template>
+    <template id="wholesale_page" name="Pricecut wholesale"><t t-call="website.layout"><t t-set="additional_title">Wholesale enquiries</t><t t-set="website_meta_description">Contact A&amp;R Pricecut Supermarket in Sangre Grande for wholesale product availability, quantities and pricing.</t><div id="wrap" class="pc-page"><section class="pc-page-hero pc-page-hero-navy oe_structure"><div class="pc-container"><span class="pc-eyebrow">WHOLESALE &amp; RETAIL</span><h1>Big shop?<br/><em>Let's talk.</em></h1><p>Ask our team about wholesale availability and current pricing.</p><a href="/pricecut/contact" class="pc-button">Make an enquiry <span aria-hidden="true">→</span></a></div></section><section class="pc-section pc-container"><div class="pc-section-heading oe_structure"><div><span class="pc-eyebrow">MAKE YOUR ENQUIRY SIMPLE</span><h2>Tell us what you need.</h2><p>Have these details ready when you call so our team can help.</p></div><t t-call="ar_pricecut_website.phone"/></div><div class="pc-info-grid oe_structure"><article><i class="fa fa-list-ul" aria-hidden="true"/><h3>Your shopping list</h3><p>Share the product names, preferred brands and pack sizes you're looking for.</p></article><article><i class="fa fa-cubes" aria-hidden="true"/><h3>Your quantities</h3><p>Let us know how much you need so we can check availability and pricing.</p></article><article><i class="fa fa-calendar" aria-hidden="true"/><h3>Your timing</h3><p>Tell us when you need the items and confirm collection arrangements with the store.</p></article></div><p class="pc-fine-print">Wholesale prices, minimum quantities and availability are confirmed by the store at the time of enquiry.</p></section><t t-call="ar_pricecut_website.visit_strip"/><div class="oe_structure" id="pc-wholesale-extra"/></div></t></template>
+    <template id="contact_content" name="Pricecut contact content">
+        <div id="wrap" class="pc-page"><section class="pc-page-hero oe_structure"><div class="pc-container"><span class="pc-eyebrow">LET'S MAKE SHOPPING SIMPLE</span><h1>Call us.<br/><em>Come see us.</em></h1><p>We're right here in Sangre Grande.</p></div></section>
+            <section class="pc-section pc-container pc-contact-grid"><div><span class="pc-eyebrow">A&amp;R PRICECUT SUPERMARKET</span><h2>Find your way<br/>to better value.</h2><div class="pc-contact-detail"><i class="fa fa-map-marker" aria-hidden="true"/><div><h3>Visit the store</h3><p t-field="website.pricecut_address"/></div></div><div class="pc-contact-detail"><i class="fa fa-phone" aria-hidden="true"/><div><h3>Give us a call</h3><t t-call="ar_pricecut_website.phone"/><p>For products, prices and wholesale enquiries.</p></div></div><div class="pc-contact-detail"><i class="fa fa-clock-o" aria-hidden="true"/><div><h3>Plan your visit</h3><p t-if="website.pricecut_hours" t-field="website.pricecut_hours"/><p t-else="">Please call to confirm today's opening hours.</p></div></div><a href="https://www.google.com/maps/search/?api=1&amp;query=A%26R%20Pricecut%20Supermarket%20Eastern%20Main%20Road%20Sangre%20Grande" target="_blank" rel="noopener noreferrer" class="pc-button">Open Google Maps <span aria-hidden="true">→</span></a></div><div class="pc-location-card"><div class="pc-location-photo"><img src="/ar_pricecut_website/static/src/img/cat_pantry_hd.webp" alt="Everyday grocery shopping essentials" loading="lazy"/></div><div><span class="pc-eyebrow">YOUR NEXT STOP</span><h3>Sangre Grande,<br/>Trinidad &amp; Tobago.</h3><p>Use the map link to plan your route to A&amp;R Pricecut Supermarket.</p><a href="https://www.waze.com/live-map/directions?to=place.w.195887210.1958675491.36198282" target="_blank" rel="noopener noreferrer" class="pc-text-link">Get directions with Waze <span aria-hidden="true">→</span></a></div></div></section>
+            <section id="questions" class="pc-section pc-container pc-faq oe_structure"><span class="pc-eyebrow">A LITTLE HELP BEFORE YOU SHOP</span><h2>Shopping questions</h2><details><summary>How do I check if an item is available?</summary><p>Call the store with the product name and size. Our team can confirm the current availability and price.</p></details><details><summary>Can I enquire about wholesale purchases?</summary><p>Yes. Call us with your product list, quantities and required date. The store will confirm wholesale pricing and any minimum quantities.</p></details><details><summary>Do you offer delivery or collection?</summary><p>Please contact the store to confirm available arrangements before placing an order. Delivery coverage, fees and timing must be agreed with the store.</p></details><details><summary>How can I ask about an exchange or return?</summary><p>Contact the store with your receipt and product details so the team can explain the applicable policy.</p></details></section><div class="oe_structure" id="pc-contact-extra"/>
+        </div>
+    </template>
+    <template id="contact_page" name="Contact A&amp;R Pricecut"><t t-call="website.layout"><t t-set="additional_title">Contact &amp; directions</t><t t-set="website_meta_description">Call A&amp;R Pricecut Supermarket on 868 324-3448 or visit Eastern Main Road, Sangre Grande, Trinidad and Tobago.</t><t t-call="ar_pricecut_website.contact_content"/></t></template>
+    <template id="native_contact_page" inherit_id="website.contactus" name="Pricecut native contact route" priority="90"><xpath expr="//div[@id='wrap']" position="replace"><t t-if="website.pricecut_enabled" t-call="ar_pricecut_website.contact_content"/><t t-else="">$0</t></xpath></template>
+</odoo>

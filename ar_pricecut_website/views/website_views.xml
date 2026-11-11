@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="website_form_pricecut" model="ir.ui.view">
+        <field name="name">website.form.pricecut</field>
+        <field name="model">website</field>
+        <field name="inherit_id" ref="website.view_website_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/group[@name='domain']" position="after">
+                <group string="A&amp;R Pricecut Supermarket" groups="website.group_website_designer">
+                    <field name="pricecut_enabled"/>
+                    <field name="pricecut_setup_done" invisible="1"/>
+                    <field name="pricecut_phone" invisible="not pricecut_enabled"/>
+                    <field name="pricecut_address" invisible="not pricecut_enabled"/>
+                    <field name="pricecut_hours" invisible="not pricecut_enabled" placeholder="Confirm hours with the store before entering"/>
+                    <button name="action_pricecut_initialize" type="object" string="Initialize Pricecut Website"
+                            class="btn-primary" invisible="pricecut_setup_done"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

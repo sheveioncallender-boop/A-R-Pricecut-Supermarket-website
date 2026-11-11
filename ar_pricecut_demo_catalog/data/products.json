@@ -1,0 +1,110 @@
+[
+  {
+    "key": "carib_lager",
+    "name": "Carib Lager 275ml",
+    "category": "beer",
+    "price": 13,
+    "image": "carib_lager.png",
+    "source": "https://www.naughtygrapett.com/product/carib-beer/",
+    "url": "https://www.naughtygrapett.com/wp-content/uploads/2021/07/carib_beer_275cl_12380000.png"
+  },
+  {
+    "key": "stag_lager",
+    "name": "Stag Lager 275ml",
+    "category": "beer",
+    "price": 13,
+    "image": "stag_lager.png",
+    "source": "https://shop.drinksbox.com/products/stag-lager-5-2-abv-275ml",
+    "url": "https://shop.drinksbox.com/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MTE5MTQsInB1ciI6ImJsb2JfaWQifX0=--c606496b783a9dfc6d88eef2906b4da0c22e4223/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJwbmciLCJyZXNpemVfdG9fbGltaXQiOls4MDAsODAwXX0sInB1ciI6InZhcmlhdGlvbiJ9fQ==--4b5d02fa0b2aa9b5dcac94590168ab660a542d1d/Stag.png"
+  },
+  {
+    "key": "carib_malta",
+    "name": "Carib Malta 275ml",
+    "category": "beverages",
+    "price": 10,
+    "image": "carib_malta.jpg",
+    "source": "https://caribbspice.com/products/carib-malta-275ml",
+    "url": "https://caribbspice.com/cdn/shop/files/Image-1_-_2026-01-16T124456.420.jpg?v=1768585507"
+  },
+  {
+    "key": "chubby_grape",
+    "name": "Chubby Grape 250ml",
+    "category": "beverages",
+    "price": 4,
+    "image": "chubby_grape.png",
+    "source": "https://shopsmj.com/products/chubby",
+    "url": "https://cdn.shopify.com/s/files/1/1302/2643/files/purple_power_-_lo.png?v=1753455932"
+  },
+  {
+    "key": "chubby_banana",
+    "name": "Chubby Banana 250ml",
+    "category": "beverages",
+    "price": 4,
+    "image": "chubby_banana.png",
+    "source": "https://shopsmj.com/products/chubby",
+    "url": "https://cdn.shopify.com/s/files/1/1302/2643/files/banana_-_la.png?v=1753455932"
+  },
+  {
+    "key": "busta_pear",
+    "name": "Busta Pear 355ml",
+    "category": "beverages",
+    "price": 6,
+    "image": "busta_pear.png",
+    "source": "https://shopsmj.com/products/busta-1",
+    "url": "https://cdn.shopify.com/s/files/1/1302/2643/products/66FADBD4-D07F-44D1-AD50-E75182C5EED4.png?v=1670598971"
+  },
+  {
+    "key": "cole_cold",
+    "name": "Cole Cold Grape 355ml",
+    "category": "beverages",
+    "price": 5,
+    "image": "cole_cold.png",
+    "source": "https://shopsmj.com/products/cole-cold-grape-370ml",
+    "url": "https://cdn.shopify.com/s/files/1/1302/2643/files/Buy-Cole-Cold-Soft-Drink_835138e3-e469-4249-afdf-d856940b9f9e.png?v=1685386905"
+  },
+  {
+    "key": "oasis",
+    "name": "Oasis Water 500ml",
+    "category": "beverages",
+    "price": 4,
+    "image": "oasis.png",
+    "source": "https://shopsmj.com/products/oasis-500ml",
+    "url": "https://cdn.shopify.com/s/files/1/1302/2643/files/Buy-oasis-premium-water-Trinidad.png?v=1700763643"
+  },
+  {
+    "key": "chief_curry",
+    "name": "Chief Mutton Curry 85g",
+    "category": "pantry",
+    "price": 12,
+    "image": "chief_curry.webp",
+    "source": "https://www.chief-brand.com/",
+    "url": "https://www.chief-brand.com/v2021/wp-content/uploads/2023/06/Mutton-Curry_85G-600x600.webp"
+  },
+  {
+    "key": "chief_taco",
+    "name": "Chief Taco Seasoning 40g",
+    "category": "pantry",
+    "price": 9,
+    "image": "chief_taco.webp",
+    "source": "https://www.chief-brand.com/",
+    "url": "https://www.chief-brand.com/v2021/wp-content/uploads/2023/06/Taco-Seasoning-40G-600x600.webp"
+  },
+  {
+    "key": "chief_lemon",
+    "name": "Chief Lemon Pepper Seasoning 40g",
+    "category": "pantry",
+    "price": 9,
+    "image": "chief_lemon.jpg",
+    "source": "https://www.chief-brand.com/",
+    "url": "https://www.chief-brand.com/v2021/wp-content/uploads/2022/11/Lemon-Pepper-Seasoning-40g_3D-600x600.jpg"
+  },
+  {
+    "key": "chief_sprinkles",
+    "name": "Chief Rainbow Sprinkles 55g",
+    "category": "pantry",
+    "price": 10,
+    "image": "chief_sprinkles.jpg",
+    "source": "https://www.chief-brand.com/",
+    "url": "https://www.chief-brand.com/v2021/wp-content/uploads/2022/11/Rainbow-Sprinkles-55g_3D-600x600.jpg"
+  }
+]
